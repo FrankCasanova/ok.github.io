@@ -29,7 +29,7 @@ async function handleFormSubmission(event) {
     
     const playerNameInput = document.querySelector('#playerName').value;
     const encodedPlayerName = encodeURIComponent(playerNameInput);
-    const playerUrl = `http://127.0.0.1:8000/api/v1/playerprofile-data${encodedPlayerName}`;
+    const playerUrl = `https://lol-statistics-eeyy.onrender.com/api/v1/playerprofile-data${encodedPlayerName}`;
 
     // Fetch the JSON file
     const response = await fetch(playerUrl);
@@ -86,14 +86,7 @@ async function handleFormSubmission(event) {
             `;
             performanceStats.innerHTML = performanceStatsHTML;
 
-            // const rankAndMmrHTML = `
-            //     <h2>Rank and MMR</h2>
-            //     <ul>
-            //         <img class="rank-image" src="${jsonData.champ_info.rank_image}" alt="Rank Image"></li>
-            //         <li><strong>MMR:</strong> ${jsonData.mmr.mmr} ${jsonData.mmr.rank}</li>
-            //     </ul>
-            // `;
-            // rankAndMmr.innerHTML = rankAndMmrHTML;
+
 
             const top5BestWrHTML = `
                 <h2>Top 5 Best Win Rates with Champion</h2>
