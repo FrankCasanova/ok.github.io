@@ -7,6 +7,7 @@ const performanceStats = document.querySelector('.performance-stats');
 const rankAndMmr = document.querySelector('.rank-and-mmr');
 const top5BestWr = document.querySelector('.top-5-best-wr-with-champ');
 const championLore = document.querySelector('.champion-lore');
+const loadingSpinner = document.querySelector('#loadingSpinner');
 
 // Select the audio element
 var audio = document.querySelector('audio');
@@ -16,7 +17,7 @@ var form = document.querySelector('#playerSearchForm');
 
 // Add an event listener to the form
 form.addEventListener('submit', function() {
-    // Play the audio
+    loadingSpinner.classList.remove('hidden');
     audio.play();
 });
 
@@ -37,6 +38,9 @@ async function handleFormSubmission(event) {
         throw new Error('Network response was not ok');
     }
     const jsonData = await response.json();
+            loadingSpinner.classList.add('hidden');
+
+    // Populate the HTML sections with JSON data
 
             // Populate the HTML sections with JSON data
             playerName.textContent = `Player Profile - ${jsonData.champ_info.name}`;
