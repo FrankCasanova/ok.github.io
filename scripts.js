@@ -43,7 +43,7 @@ async function handleFormSubmission(event) {
     // Populate the HTML sections with JSON data
 
             // Populate the HTML sections with JSON data
-            playerName.textContent = `Player Profile - ${jsonData.champ_info.name}`;
+            playerName.textContent = `${jsonData.champ_info.name}`;
 
             const playerInfoHTML = `
                 <h2>Player Information</h2>
