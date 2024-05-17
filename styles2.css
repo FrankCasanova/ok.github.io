@@ -20,9 +20,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #111;
+    background-color: rgba(17, 17, 17, 0.8);
     padding: 20px;
     text-align: center;
+    border-bottom: 2px solid #222;
 }
 
 /* Form Styles in Header */
@@ -43,10 +44,15 @@ header form button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(44, 140, 194);
+    background-color: #2c8cc2;
     color: #111;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+header form button:hover {
+    background-color: #0bc4e2;
+    transform: scale(1.01);
 }
 
 header form button:hover {
@@ -97,11 +103,12 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #121212;
+    background-color: rgba(18, 18, 18, 0.9);
     padding: 20px;
     border-radius: 10px;
-    position: relative; /* Add position relative to the section */
-    overflow: hidden; /* Ensure the pseudo-element stays within section */
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #222;
 }
 
 /* Light reflection effect */
@@ -113,15 +120,24 @@ section::before {
     width: 200%;
     height: 200%;
     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, transparent 80%);
-    transition: all 0.5s ease;
     pointer-events: none; /* Ensure the pseudo-element doesn't interfere with pointer events */
     transform: translate(-50%, -50%) rotate(45deg); /* Initial position */
+    animation: none; /* Ensure no animation by default */
 }
 
-/* Hover effect */
-section:hover::before {
-    transform: translate(150%, 150%) rotate(45deg); /* Move pseudo-element diagonally */
+@keyframes lightReflection {
+    0% {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+        transform: translate(150%, 150%) rotate(45deg);
+    }
 }
+
+section:hover::before {
+    animation: lightReflection 0.5s ease forwards; /* Trigger the animation on hover */
+}
+
 
 
 
